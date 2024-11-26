@@ -93,5 +93,40 @@
                 addMessage(userInput, "user");
 
                 // Calcola la risposta del chatbot
-                const botResponse = getBotResponse(userInpu
+                const botResponse = getBotResponse(userInput);
+                
+                // Mostra la risposta del chatbot
+                addMessage(botResponse, "bot");
+
+                // Pulisce l'input dell'utente
+                document.getElementById("user-input").value = "";
+            }
+        }
+
+        // Funzione che restituisce la risposta del chatbot in base all'input
+        function getBotResponse(userInput) {
+            return responses[userInput] || "Mi dispiace, non ho capito la tua domanda.";
+        }
+
+        // Funzione che aggiunge i messaggi nella chat
+        function addMessage(message, sender) {
+            const chatBox = document.getElementById("chat-box");
+
+            // Crea un nuovo div per il messaggio
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+            messageDiv.classList.add(sender + "-message");
+            messageDiv.textContent = message;
+
+            // Aggiungi il messaggio alla chat
+            chatBox.appendChild(messageDiv);
+
+            // Scorri verso il basso per mostrare l'ultimo messaggio
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>
+
 
